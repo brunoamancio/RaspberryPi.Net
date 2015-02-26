@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 
 // Derived based on work done by AdamS at http://forums.netduino.com/index.php?/topic/3335-netduino-plus-and-ds1620-anyone/page__view__findpost__p__22972
@@ -89,7 +90,7 @@ namespace RaspberryPiDotNet
             SendCommand(0xAA);
             int raw_data = ReadData();
             _rst.Write(false);
-            return ((double)raw_data / 2.0);   
+            return ((double)raw_data / Double.Parse("2.0", CultureInfo.InvariantCulture));
         }
     }
 }
